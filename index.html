@@ -32,6 +32,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1
 .hero-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0}
 .hero h1{font-weight:800;font-size:clamp(1.75rem,6vw,4rem);line-height:1.1;letter-spacing:-.02em;color:#fff;margin-bottom:.9rem}
 .hero h1 .ai-word{color:var(--electric);text-shadow:0 0 30px rgba(61,158,255,0.35)}
+.hero h1 .dollar{color:var(--accent);text-shadow:0 0 30px rgba(0,230,118,0.35)}
 .hero p{font-size:.95rem;color:var(--muted);max-width:480px;line-height:1.7}
 
 .main-grid{display:grid;grid-template-columns:1fr 340px;gap:1.5rem;max-width:1080px;margin:1.5rem auto 0;padding:0 1.25rem 3rem}
@@ -56,6 +57,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1
 .disclaimer{font-size:.7rem;color:#555;line-height:1.6}
 
 .sidebar{display:flex;flex-direction:column;gap:1.25rem}
+
 .tools-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.25rem}
 .tools-card h3{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
 .tool-item{padding:.8rem 0;border-bottom:1px solid var(--border)}
@@ -70,21 +72,16 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1
 .tool-btn{display:block;width:100%;padding:.5rem;background:transparent;border:1px solid var(--border);border-radius:8px;color:#ccc;font-family:'Plus Jakarta Sans',sans-serif;font-size:.74rem;font-weight:700;text-align:center;cursor:pointer;text-decoration:none;transition:all .18s}
 .tool-btn:hover{border-color:var(--electric);color:var(--electric)}
 
-/* BOOK CARD */
-.book-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.25rem;position:relative;overflow:hidden}
+.book-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1rem 1.25rem;position:relative;overflow:hidden;display:flex;gap:1rem;align-items:center}
 .book-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--electric),var(--accent))}
-.book-tag{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--electric);margin-bottom:.75rem}
-.book-cover{width:100%;aspect-ratio:3/2;background:linear-gradient(135deg,#0d1f3c,#0a2a1a);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;border:1px solid var(--border);padding:1.25rem;text-align:center}
-.book-cover-inner{display:flex;flex-direction:column;gap:.4rem}
-.book-cover-title{font-weight:800;font-size:.95rem;color:#fff;line-height:1.2;letter-spacing:-.01em}
-.book-cover-title .ai-blue{color:var(--electric)}
-.book-cover-sub{font-size:.72rem;color:var(--muted)}
-.book-title{font-weight:800;font-size:.95rem;color:#fff;line-height:1.3;margin-bottom:.4rem}
-.book-desc{font-size:.78rem;color:var(--muted);line-height:1.6;margin-bottom:1rem}
-.book-meta{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
-.book-stars{color:#f5a623;font-size:.85rem;letter-spacing:.05em}
-.book-platform{font-size:.72rem;color:#666}
-.book-btn{display:block;width:100%;padding:.65rem;background:var(--electric);border:none;border-radius:8px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:800;text-align:center;cursor:pointer;text-decoration:none;transition:opacity .18s;letter-spacing:.01em}
+.book-thumb{flex-shrink:0;width:60px;height:80px;background:linear-gradient(135deg,#0d1f3c,#0a2a1a);border-radius:6px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;padding:.4rem;text-align:center}
+.book-thumb-title{font-weight:800;font-size:.5rem;color:#fff;line-height:1.3}
+.book-thumb-title .ai-blue{color:var(--electric)}
+.book-info{flex:1;min-width:0}
+.book-tag{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--electric);margin-bottom:.2rem}
+.book-title{font-weight:800;font-size:.82rem;color:#fff;line-height:1.3;margin-bottom:.25rem}
+.book-stars{color:#f5a623;font-size:.75rem;margin-bottom:.4rem;display:block}
+.book-btn{display:inline-block;padding:.4rem .9rem;background:var(--electric);border:none;border-radius:6px;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.7rem;font-weight:800;text-align:center;cursor:pointer;text-decoration:none;transition:opacity .18s;white-space:nowrap}
 .book-btn:hover{opacity:.85}
 
 .stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.25rem}
@@ -100,7 +97,6 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1
   .main-grid{grid-template-columns:1fr;padding:0 1rem 2.5rem}
   .net-bar{flex-direction:column;text-align:center;gap:.3rem}
   .net-bar .net-val{font-size:1.4rem}
-  .book-card{order:3}
 }
 @media(max-width:400px){
   .field-row{grid-template-columns:1fr}
@@ -124,18 +120,14 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1
 
 <div class="hero">
   <div class="hero-tag"><span class="dot"></span> AI ROI Calculator — 100% Free</div>
-  <h1>How much could <span class="ai-word">AI</span><br>save your business?</h1>
+  <h1>How much <span class="dollar">$</span> could <span class="ai-word">AI</span><br>save your business?</h1>
   <p>Enter your team details below. Get your exact savings estimate and the best AI tools for your situation — in under 60 seconds.</p>
 </div>
 
 <div class="main-grid">
 
   <div class="calc-card">
-    <div class="section-label">Your team</div>
-    <div class="field-row">
-      <div class="field"><label>Team size (people)</label><input type="number" id="team" value="10" min="1" inputmode="numeric"></div>
-      <div class="field"><label>Avg salary ($/year)</label><input type="number" id="salary" value="75000" min="1" inputmode="numeric"></div>
-    </div>
+
     <div class="section-label">Hours per person per week on...</div>
     <div class="field-row">
       <div class="field"><label>Writing & emails</label><input type="number" id="writing" value="5" min="0" max="40" inputmode="numeric"></div>
@@ -143,6 +135,13 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1
       <div class="field"><label>Customer support</label><input type="number" id="support" value="3" min="0" max="40" inputmode="numeric"></div>
       <div class="field"><label>Coding & tech work</label><input type="number" id="coding" value="3" min="0" max="40" inputmode="numeric"></div>
     </div>
+
+    <div class="section-label">Your team</div>
+    <div class="field-row">
+      <div class="field"><label>Team size (people)</label><input type="number" id="team" value="10" min="1" inputmode="numeric"></div>
+      <div class="field"><label>Avg salary ($/year)</label><input type="number" id="salary" value="75000" min="1" inputmode="numeric"></div>
+    </div>
+
     <div class="section-label">AI investment</div>
     <div class="field-row">
       <div class="field"><label>Monthly AI spend ($)</label><input type="number" id="toolcost" value="500" min="0" inputmode="numeric"></div>
@@ -157,6 +156,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1
         </select>
       </div>
     </div>
+
     <div class="results-row">
       <div class="result-box"><span class="val" id="out-hours">—</span><span class="lbl">Hours saved/yr</span></div>
       <div class="result-box"><span class="val" id="out-dollars">—</span><span class="lbl">Value saved</span></div>
@@ -176,22 +176,16 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1
       <div id="tool-list"></div>
     </div>
 
-    <!-- BOOK CARD -->
     <div class="book-card">
-      <div class="book-tag">📖 Featured Book</div>
-      <div class="book-cover">
-        <div class="book-cover-inner">
-          <div class="book-cover-title"><span class="ai-blue">AI</span> for the<br>50+ Entrepreneur</div>
-          <div class="book-cover-sub">Your practical guide to AI tools</div>
-        </div>
+      <div class="book-thumb">
+        <div class="book-thumb-title"><span class="ai-blue">AI</span> for the 50+ Entrepreneur</div>
       </div>
-      <div class="book-title">AI for the 50+ Entrepreneur</div>
-      <div class="book-desc">The practical guide to using AI tools to grow your business — written specifically for entrepreneurs who didn't grow up with tech.</div>
-      <div class="book-meta">
+      <div class="book-info">
+        <div class="book-tag">📖 Featured Book</div>
+        <div class="book-title">AI for the 50+ Entrepreneur</div>
         <span class="book-stars">★★★★★</span>
-        <span class="book-platform">Available on Amazon</span>
+        <a class="book-btn" href="https://amzn.to/41ovXY3" target="_blank">Buy on Amazon →</a>
       </div>
-      <a class="book-btn" href="https://amzn.to/4t6InQk" target="_blank">Get the book on Amazon →</a>
     </div>
 
     <div class="stat-card">
@@ -244,7 +238,7 @@ function calc(){
   if(coding>0)active.push("coding");
   const list=document.getElementById("tool-list");
   list.innerHTML="";
-  tools.filter(t=>t.fits.some(f=>active.includes(f))).slice(0,4).forEach(t=>{
+  tools.filter(t=>t.fits.some(f=>active.includes(f))).slice(0,3).forEach(t=>{
     list.innerHTML+=`<div class="tool-item"><div class="tool-header"><span class="tool-name">${t.name}</span><span class="badge badge-${t.badge}">${t.label}</span></div><div class="tool-desc">${t.desc}</div><div class="tool-cost">${t.cost}</div><a class="tool-btn" href="${t.url}" target="_blank">Get started →</a></div>`;
   });
 }

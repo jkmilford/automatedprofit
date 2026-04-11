@@ -1,125 +1,140 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AutomatedProfit.ai — Find Your AI ROI</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --black:#080808;
-  --white:#f5f3ee;
-  --accent:#00ff88;
-  --accent2:#ff3d00;
-  --mid:#1a1a1a;
-  --border:#2a2a2a;
-  --muted:#888;
-  --card:#111;
+  --black:#0a0a0a;
+  --white:#ffffff;
+  --off-white:#f7f7f5;
+  --accent:#00e676;
+  --accent-dim:#00c853;
+  --mid:#161616;
+  --card:#1a1a1a;
+  --border:#2c2c2c;
+  --muted:#909090;
+  --text:#e8e8e8;
 }
-body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+body{background:var(--black);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
 
 /* NAV */
-nav{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 2.5rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(8,8,8,0.95);backdrop-filter:blur(12px);z-index:100}
-.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-.01em}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,10,10,0.97);backdrop-filter:blur(10px);z-index:100}
+.logo{font-weight:800;font-size:1rem;letter-spacing:-.01em;color:var(--white)}
 .logo span{color:var(--accent)}
-.nav-cta{background:var(--accent);color:var(--black);font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;padding:.5rem 1.2rem;border:none;cursor:pointer;letter-spacing:.05em;text-transform:uppercase}
+.nav-pill{background:var(--accent);color:#000;font-weight:700;font-size:.8rem;padding:.45rem 1.1rem;border:none;cursor:pointer;border-radius:100px}
 
 /* HERO */
-.hero{padding:5rem 2.5rem 3rem;max-width:1100px;margin:0 auto}
-.hero-tag{display:inline-block;border:1px solid var(--accent);color:var(--accent);font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .9rem;margin-bottom:2rem}
-.hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.8rem,6vw,5.5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.5rem}
+.hero{padding:4rem 2rem 2rem;max-width:1080px;margin:0 auto}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:#1a1a1a;border:1px solid var(--border);border-radius:100px;padding:.35rem 1rem;margin-bottom:1.8rem;font-size:.78rem;font-weight:600;color:var(--muted)}
+.hero-tag .dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.hero h1{font-weight:800;font-size:clamp(2.2rem,5vw,4rem);line-height:1.1;letter-spacing:-.02em;color:var(--white);margin-bottom:1rem}
 .hero h1 em{color:var(--accent);font-style:normal}
-.hero p{font-size:1.05rem;color:#aaa;max-width:520px;line-height:1.7;font-weight:300}
+.hero p{font-size:1rem;color:var(--muted);max-width:480px;line-height:1.7;font-weight:400}
 
-/* GRID LAYOUT */
-.main-grid{display:grid;grid-template-columns:1fr 380px;gap:2rem;max-width:1100px;margin:2rem auto 0;padding:0 2.5rem 4rem}
-@media(max-width:800px){.main-grid{grid-template-columns:1fr;padding:0 1.5rem 3rem}}
+/* LAYOUT */
+.main-grid{display:grid;grid-template-columns:1fr 360px;gap:1.5rem;max-width:1080px;margin:2rem auto 0;padding:0 2rem 4rem}
+@media(max-width:820px){.main-grid{grid-template-columns:1fr;padding:0 1.25rem 3rem}}
 
-/* CALCULATOR CARD */
-.calc-card{background:var(--card);border:1px solid var(--border);padding:2rem}
-.calc-section-label{font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+/* CALCULATOR */
+.calc-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem}
+.section-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
-.field{display:flex;flex-direction:column;gap:.5rem}
-.field label{font-size:.78rem;color:var(--muted);letter-spacing:.02em}
-.field input,.field select{background:var(--mid);border:1px solid var(--border);color:var(--white);padding:.7rem .9rem;font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border .2s}
+.field{display:flex;flex-direction:column;gap:.45rem}
+.field label{font-size:.82rem;font-weight:600;color:#bbb}
+.field input,.field select{
+  background:#111;
+  border:1px solid var(--border);
+  color:var(--white);
+  padding:.7rem 1rem;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.92rem;
+  font-weight:500;
+  outline:none;
+  border-radius:8px;
+  transition:border-color .2s;
+}
 .field input:focus,.field select:focus{border-color:var(--accent)}
-.field select option{background:var(--mid)}
+.field select option{background:#111}
 
 /* RESULTS */
-.results-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);margin:1.5rem 0}
-.result-cell{background:var(--card);padding:1.2rem 1rem;text-align:center}
-.result-cell .val{font-family:'Syne',sans-serif;font-weight:700;font-size:1.6rem;color:var(--accent);display:block}
-.result-cell .lbl{font-size:.7rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:.3rem;display:block}
-.net-bar{background:var(--accent);color:var(--black);padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
-.net-bar .net-label{font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase}
-.net-bar .net-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem}
+.results-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.5rem 0 1rem}
+.result-box{background:#111;border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center}
+.result-box .val{font-size:1.6rem;font-weight:800;color:var(--accent);display:block;letter-spacing:-.02em}
+.result-box .lbl{font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:.2rem;display:block}
+
+.net-bar{background:var(--accent);border-radius:10px;padding:1.1rem 1.4rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem}
+.net-bar .net-label{font-weight:700;font-size:.88rem;color:#000;letter-spacing:-.01em}
+.net-bar .net-val{font-weight:800;font-size:1.35rem;color:#000;letter-spacing:-.02em}
+
+.disclaimer{font-size:.74rem;color:#555;line-height:1.6}
 
 /* SIDEBAR */
-.sidebar{display:flex;flex-direction:column;gap:1.5rem}
-.tools-card{background:var(--card);border:1px solid var(--border);padding:1.5rem}
-.tools-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.2rem;color:var(--white)}
-.tool-item{display:flex;flex-direction:column;gap:.3rem;padding:.9rem 0;border-bottom:1px solid var(--border)}
-.tool-item:last-child{border-bottom:none;padding-bottom:0}
-.tool-top{display:flex;justify-content:space-between;align-items:center}
-.tool-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem}
-.tool-badge{font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .6rem;font-weight:500}
-.badge-hot{background:var(--accent2);color:white}
-.badge-solid{background:#1a3a2a;color:var(--accent);border:1px solid var(--accent)}
-.tool-desc{font-size:.75rem;color:var(--muted);line-height:1.5}
-.tool-cost{font-size:.75rem;color:#666}
-.tool-link{display:block;margin-top:.5rem;background:transparent;border:1px solid var(--border);color:var(--white);text-align:center;padding:.5rem;font-family:'Syne',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all .2s}
-.tool-link:hover{border-color:var(--accent);color:var(--accent)}
+.sidebar{display:flex;flex-direction:column;gap:1.25rem}
+.tools-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem}
+.tools-card h3{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem}
 
-.trust-card{background:var(--mid);border:1px solid var(--border);padding:1.5rem}
-.trust-card p{font-size:.8rem;color:var(--muted);line-height:1.7}
-.trust-stat{display:flex;align-items:baseline;gap:.5rem;margin-top:1rem}
-.trust-stat .big{font-family:'Syne',sans-serif;font-weight:800;font-size:2rem;color:var(--accent)}
-.trust-stat .sm{font-size:.75rem;color:var(--muted);line-height:1.4}
+.tool-item{padding:.9rem 0;border-bottom:1px solid var(--border)}
+.tool-item:last-child{border-bottom:none;padding-bottom:0}
+.tool-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.25rem}
+.tool-name{font-size:.92rem;font-weight:700;color:var(--white)}
+.badge{font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.2rem .6rem;border-radius:100px}
+.badge-green{background:rgba(0,230,118,.15);color:var(--accent);border:1px solid rgba(0,230,118,.3)}
+.badge-orange{background:rgba(255,107,0,.15);color:#ff8c42;border:1px solid rgba(255,107,0,.25)}
+.tool-desc{font-size:.8rem;color:var(--muted);margin-bottom:.3rem;line-height:1.5}
+.tool-cost{font-size:.78rem;color:#666;font-weight:500;margin-bottom:.6rem}
+.tool-btn{display:block;width:100%;padding:.55rem;background:transparent;border:1px solid var(--border);border-radius:8px;color:#ccc;font-family:'Plus Jakarta Sans',sans-serif;font-size:.78rem;font-weight:700;text-align:center;cursor:pointer;text-decoration:none;transition:all .18s;letter-spacing:.02em}
+.tool-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,230,118,.05)}
+
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem}
+.stat-number{font-size:2.8rem;font-weight:800;color:var(--accent);letter-spacing:-.03em;line-height:1}
+.stat-label{font-size:.82rem;color:var(--muted);margin-top:.4rem;line-height:1.5}
 
 /* FOOTER */
-footer{border-top:1px solid var(--border);padding:2rem 2.5rem;max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:gap}
-footer p{font-size:.75rem;color:var(--muted)}
-footer a{font-size:.75rem;color:var(--muted);text-decoration:none}
-footer a:hover{color:var(--accent)}
+.site-footer{border-top:1px solid var(--border);padding:1.8rem 2rem;max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.site-footer p{font-size:.78rem;color:#555}
+.site-footer a{font-size:.78rem;color:#555;text-decoration:none;margin-left:1.5rem}
+.site-footer a:hover{color:var(--accent)}
 
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.hero{animation:fadeUp .6s ease both}
-.main-grid{animation:fadeUp .6s .15s ease both;opacity:0;animation-fill-mode:both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero{animation:fadeUp .5s ease both}
+.main-grid{animation:fadeUp .5s .1s ease both;opacity:0;animation-fill-mode:both}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="logo">Automated<span>Profit</span>.ai</div>
-  <button class="nav-cta">Free Calculator</button>
+  <button class="nav-pill">Free Calculator</button>
 </nav>
 
 <div class="hero">
-  <div class="hero-tag">AI ROI Calculator — Free Tool</div>
-  <h1>Find out how much<br>AI can save <em>your</em><br>business.</h1>
-  <p>Enter your team details below. We'll calculate your exact savings, ROI, and recommend the best AI tools for your situation — in seconds.</p>
+  <div class="hero-tag"><span class="dot"></span> AI ROI Calculator — 100% Free</div>
+  <h1>How much could AI<br>save <em>your business</em>?</h1>
+  <p>Enter your team details below. Get your exact savings estimate and the best AI tools for your situation — in under 60 seconds.</p>
 </div>
 
 <div class="main-grid">
 
-  <!-- CALCULATOR -->
   <div class="calc-card">
-    <div class="calc-section-label">Your team</div>
+    <div class="section-label">Your team</div>
     <div class="field-row">
       <div class="field">
-        <label>Team size</label>
+        <label>Team size (people)</label>
         <input type="number" id="team" value="10" min="1">
       </div>
       <div class="field">
-        <label>Avg salary ($/yr)</label>
+        <label>Average salary ($/year)</label>
         <input type="number" id="salary" value="75000" min="1">
       </div>
     </div>
 
-    <div class="calc-section-label">Weekly hours spent on...</div>
+    <div class="section-label">Hours spent per person per week on...</div>
     <div class="field-row">
       <div class="field">
         <label>Writing & emails</label>
@@ -139,10 +154,10 @@ footer a:hover{color:var(--accent)}
       </div>
     </div>
 
-    <div class="calc-section-label">AI investment</div>
+    <div class="section-label">AI investment</div>
     <div class="field-row">
       <div class="field">
-        <label>Monthly AI spend ($)</label>
+        <label>Monthly AI tool spend ($)</label>
         <input type="number" id="toolcost" value="500" min="0">
       </div>
       <div class="field">
@@ -158,58 +173,55 @@ footer a:hover{color:var(--accent)}
       </div>
     </div>
 
-    <div class="results-grid">
-      <div class="result-cell"><span class="val" id="out-hours">—</span><span class="lbl">Hours saved/yr</span></div>
-      <div class="result-cell"><span class="val" id="out-dollars">—</span><span class="lbl">Value saved</span></div>
-      <div class="result-cell"><span class="val" id="out-roi">—</span><span class="lbl">ROI</span></div>
+    <div class="results-row">
+      <div class="result-box"><span class="val" id="out-hours">—</span><span class="lbl">Hours saved / yr</span></div>
+      <div class="result-box"><span class="val" id="out-dollars">—</span><span class="lbl">Value saved</span></div>
+      <div class="result-box"><span class="val" id="out-roi">—</span><span class="lbl">Your ROI</span></div>
     </div>
 
     <div class="net-bar">
-      <span class="net-label">Net annual gain</span>
+      <span class="net-label">Net annual gain after AI costs</span>
       <span class="net-val" id="out-net">—</span>
     </div>
 
-    <p style="font-size:.75rem;color:var(--muted);line-height:1.6">Estimates based on industry benchmarks. Actual results vary by team, tooling, and adoption rate. For informational purposes only.</p>
+    <p class="disclaimer">Estimates based on published industry benchmarks. Actual results vary by team, tooling, and adoption rate. For informational purposes only.</p>
   </div>
 
-  <!-- SIDEBAR -->
   <div class="sidebar">
     <div class="tools-card">
-      <h3>Recommended tools</h3>
+      <h3>Recommended for your team</h3>
       <div id="tool-list"></div>
     </div>
 
-    <div class="trust-card">
-      <div class="trust-stat">
-        <span class="big">44%</span>
-        <span class="sm">year-over-year growth<br>in global AI spending</span>
-      </div>
-      <p style="margin-top:1rem">Businesses that adopt AI now will have a compounding advantage over those that wait. The gap widens every quarter.</p>
+    <div class="stat-card">
+      <div class="stat-number">44%</div>
+      <div class="stat-label">Year-over-year growth in global AI spending in 2026. Businesses adopting AI now build a compounding advantage every quarter.</div>
     </div>
   </div>
+
 </div>
 
-<footer>
+<div class="site-footer">
   <p>© 2026 AutomatedProfit.ai — Free AI ROI Calculator</p>
-  <div style="display:flex;gap:1.5rem">
+  <div>
     <a href="#">About</a>
     <a href="#">Blog</a>
     <a href="#">Affiliate disclosure</a>
   </div>
-</footer>
+</div>
 
 <script>
 const tools=[
-  {name:"Claude for Teams",desc:"Writing, research, analysis & strategy",cost:"$30/user/mo",badge:"hot",badgeLabel:"Top Pick",url:"https://claude.ai",fits:["writing","research"]},
-  {name:"GitHub Copilot",desc:"AI pair programmer for your dev team",cost:"$19/user/mo",badge:"solid",badgeLabel:"Proven",url:"https://github.com/features/copilot",fits:["coding"]},
-  {name:"Intercom Fin",desc:"Resolve support tickets automatically with AI",cost:"~$0.99/resolution",badge:"hot",badgeLabel:"High ROI",url:"https://intercom.com",fits:["support"]},
-  {name:"Notion AI",desc:"Docs, wikis & meeting notes on autopilot",cost:"$10/user/mo",badge:"solid",badgeLabel:"Easy Win",url:"https://notion.so",fits:["writing","research"]},
-  {name:"Zapier AI",desc:"Automate workflows across your entire stack",cost:"From $20/mo",badge:"solid",badgeLabel:"Versatile",url:"https://zapier.com",fits:["research","support","writing"]},
-  {name:"Cursor",desc:"AI code editor — 10x faster engineering",cost:"$20/user/mo",badge:"hot",badgeLabel:"Top Pick",url:"https://cursor.sh",fits:["coding"]},
+  {name:"Claude for Teams",desc:"Writing, research & strategy on autopilot",cost:"$30/user/mo",badge:"green",label:"Top Pick",url:"https://claude.ai",fits:["writing","research"]},
+  {name:"GitHub Copilot",desc:"AI pair programmer — ships code faster",cost:"$19/user/mo",badge:"green",label:"Top Pick",url:"https://github.com/features/copilot",fits:["coding"]},
+  {name:"Cursor",desc:"AI code editor your engineers will love",cost:"$20/user/mo",badge:"orange",label:"Hot",url:"https://cursor.sh",fits:["coding"]},
+  {name:"Intercom Fin",desc:"Resolve support tickets automatically",cost:"~$0.99/resolution",badge:"orange",label:"High ROI",url:"https://intercom.com",fits:["support"]},
+  {name:"Notion AI",desc:"Docs, wikis & meeting notes on autopilot",cost:"$10/user/mo",badge:"green",label:"Easy Win",url:"https://notion.so",fits:["writing","research"]},
+  {name:"Zapier AI",desc:"Automate workflows across your whole stack",cost:"From $20/mo",badge:"green",label:"Versatile",url:"https://zapier.com",fits:["research","support","writing"]},
 ];
 
 function fmt(n){
-  if(n>=1000000)return"$"+Math.round(n/100000)/10+"M";
+  if(n>=1000000)return"$"+(n/1000000).toFixed(1)+"M";
   if(n>=1000)return"$"+Math.round(n/1000)+"k";
   return"$"+Math.round(n);
 }
@@ -223,7 +235,6 @@ function calc(){
   const coding=+document.getElementById("coding").value||0;
   const toolcost=+document.getElementById("toolcost").value||0;
   const mult=+document.getElementById("industry").value||1;
-
   const hrRate=salary/2080;
   const weeklySaved=team*(writing*.4+research*.35+support*.5+coding*.45)*mult;
   const annualHours=Math.round(weeklySaved*52);
@@ -231,7 +242,6 @@ function calc(){
   const annualCost=toolcost*12;
   const net=dollarSaved-annualCost;
   const roi=annualCost>0?Math.round((net/annualCost)*100):0;
-
   document.getElementById("out-hours").textContent=annualHours.toLocaleString();
   document.getElementById("out-dollars").textContent=fmt(dollarSaved);
   document.getElementById("out-roi").textContent=roi+"%";
@@ -245,17 +255,12 @@ function calc(){
 
   const list=document.getElementById("tool-list");
   list.innerHTML="";
-  const shown=tools.filter(t=>t.fits.some(f=>active.includes(f))).slice(0,4);
-  shown.forEach(t=>{
-    list.innerHTML+=`
-    <div class="tool-item">
-      <div class="tool-top">
-        <span class="tool-name">${t.name}</span>
-        <span class="tool-badge badge-${t.badge}">${t.badgeLabel}</span>
-      </div>
-      <span class="tool-desc">${t.desc}</span>
-      <span class="tool-cost">${t.cost}</span>
-      <a class="tool-link" href="${t.url}" target="_blank">Get started →</a>
+  tools.filter(t=>t.fits.some(f=>active.includes(f))).slice(0,4).forEach(t=>{
+    list.innerHTML+=`<div class="tool-item">
+      <div class="tool-header"><span class="tool-name">${t.name}</span><span class="badge badge-${t.badge}">${t.label}</span></div>
+      <div class="tool-desc">${t.desc}</div>
+      <div class="tool-cost">${t.cost}</div>
+      <a class="tool-btn" href="${t.url}" target="_blank">Get started →</a>
     </div>`;
   });
 }

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is Your Business Invisible to ChatGPT? | AutomatedProfit.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0f0d;
+    --bg-raise:#111815;
+    --bg-card:#141d19;
+    --line:#213029;
+    --accent:#00e676;
+    --accent-dim:#0f5c37;
+    --accent-glow: rgba(0,230,118,0.18);
+    --text-hi:#eaf5ee;
+    --text-mid:#a9beb1;
+    --text-low:#6c8078;
+    --flag:#ff5c5c;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text-hi);
+    font-family:'Inter',sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent-dim); color:var(--text-hi);}
+
+  a{color:var(--accent);}
+
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ---------- background texture ---------- */
+  .grid-glow{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background:
+      radial-gradient(1100px 500px at 50% -10%, var(--accent-glow), transparent 60%),
+      linear-gradient(var(--bg), var(--bg));
+    background-color:var(--bg);
+  }
+  .grid-glow::after{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to bottom, black, transparent 70%);
+  }
+
+  /* ---------- nav ---------- */
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .brand{
+    font-family:'Inter',sans-serif;
+    font-weight:700;
+    font-size:17px;
+    letter-spacing:-0.01em;
+    color:var(--text-hi);
+    text-decoration:none;
+  }
+  .nav-cta{
+    font-family:'Inter',sans-serif;
+    font-weight:600;
+    font-size:14px;
+    color:var(--accent);
+    border:1px solid var(--accent-dim);
+    padding:9px 16px;
+    border-radius:6px;
+    text-decoration:none;
+    white-space:nowrap;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{ padding:64px 0 40px; }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1px;
+    background:var(--accent-dim);
+  }
+  h1{
+    font-family:'Inter',sans-serif;
+    font-weight:700;
+    font-size:44px;
+    line-height:1.12;
+    letter-spacing:-0.01em;
+    margin:0 0 20px;
+    color:var(--text-hi);
+  }
+  h1 em{
+    font-style:normal;
+    color:var(--accent);
+  }
+  .dek{
+    font-size:18px;
+    color:var(--text-mid);
+    max-width:56ch;
+    margin:0 0 8px;
+  }
+  .meta-line{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--text-low);
+    margin-top:28px;
+  }
+
+  /* ---------- scorecard signature element ---------- */
+  .scorecard{
+    margin:40px 0 8px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:var(--bg-card);
+    padding:20px 22px;
+  }
+  .scorecard-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--text-low);
+    margin-bottom:16px;
+  }
+  .engines{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+  }
+  .engine{
+    text-align:center;
+  }
+  .engine-name{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;
+    color:var(--text-mid);
+    margin-bottom:8px;
+    white-space:nowrap;
+  }
+  .pips{ display:flex; justify-content:center; gap:4px; }
+  .pip{ width:8px; height:8px; border-radius:50%; background:var(--line); }
+  .pip.on{ background:var(--accent); box-shadow:0 0 8px var(--accent-glow); }
+  .pip.off{ background:var(--flag); opacity:0.55; }
+  .scorecard-foot{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:var(--text-low);
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1px dashed var(--line);
+  }
+
+  /* ---------- body content ---------- */
+  .content{ padding:20px 0 0; }
+  .content h2{
+    font-family:'Inter',sans-serif;
+    font-size:25px;
+    font-weight:600;
+    color:var(--text-hi);
+    margin:48px 0 16px;
+    letter-spacing:-0.005em;
+  }
+  .content h2 .idx{
+    font-family:'JetBrains Mono',monospace;
+    font-size:14px;
+    color:var(--accent);
+    margin-right:10px;
+    font-weight:500;
+  }
+  .content p{
+    color:var(--text-mid);
+    font-size:16px;
+    margin:0 0 18px;
+  }
+  .content strong{ color:var(--text-hi); font-weight:600; }
+
+  .callout{
+    border-left:2px solid var(--accent);
+    background:linear-gradient(to right, var(--accent-glow), transparent 40%);
+    padding:16px 20px;
+    border-radius:0 8px 8px 0;
+    margin:24px 0;
+    color:var(--text-hi);
+    font-size:15.5px;
+  }
+
+  .card-list{
+    display:flex; flex-direction:column; gap:12px;
+    margin:22px 0 26px;
+  }
+  .card-item{
+    display:flex; gap:14px;
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px;
+  }
+  .card-item .mark{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--accent);
+    flex-shrink:0;
+  }
+  .card-item div p{ margin:0; font-size:15px; }
+  .card-item strong{ display:block; margin-bottom:2px; font-size:15px; }
+
+  .who-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin:20px 0 28px;
+  }
+  .who-item{
+    font-size:14.5px;
+    color:var(--text-mid);
+    background:var(--bg-raise);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:12px 14px;
+  }
+  .who-item::before{
+    content:"→";
+    color:var(--accent);
+    margin-right:8px;
+  }
+
+  /* ---------- CTA block ---------- */
+  .cta-block{
+    margin:52px 0 40px;
+    text-align:center;
+    border:1px solid var(--accent-dim);
+    border-radius:16px;
+    padding:44px 30px;
+    background:
+      radial-gradient(600px 220px at 50% 0%, var(--accent-glow), transparent 70%),
+      var(--bg-card);
+  }
+  .cta-block .eyebrow{ justify-content:center; }
+  .cta-block .eyebrow::before{ display:none; }
+  .cta-block h3{
+    font-family:'Inter',sans-serif;
+    font-size:28px;
+    margin:0 0 14px;
+    color:var(--text-hi);
+  }
+  .cta-block p{
+    color:var(--text-mid);
+    max-width:48ch;
+    margin:0 auto 26px;
+    font-size:15.5px;
+  }
+  .cta-button{
+    display:inline-block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:14px;
+    font-weight:600;
+    color:#06170e;
+    background:var(--accent);
+    padding:15px 30px;
+    border-radius:8px;
+    text-decoration:none;
+    box-shadow:0 0 0 1px var(--accent-dim), 0 8px 24px -6px var(--accent-glow);
+  }
+  .cta-sub{
+    margin-top:16px !important;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--text-low) !important;
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:30px 0 60px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:var(--text-low);
+    display:flex;
+    justify-content:space-between;
+  }
+
+  @media (max-width:600px){
+    h1{ font-size:32px; }
+    .engines{ grid-template-columns:repeat(5,1fr); }
+    .engine-name{ font-size:9px; }
+    .who-grid{ grid-template-columns:1fr; }
+    .cta-block{ padding:32px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-glow"></div>
+
+<div class="wrap">
+
+  <div class="nav">
+    <a class="brand" href="https://automatedprofit.ai/">AutomatedProfit.ai</a>
+    <a class="nav-cta" href="https://automatedprofit.ai/">Free Calculator</a>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">AI Search &nbsp;·&nbsp; Free Audit</div>
+    <h1>Is your business invisible to <em>ChatGPT</em>?</h1>
+    <p class="dek">People stopped scrolling ten blue links. They ask an AI assistant one question and get one confident answer. Here's how to find out if your business is in it.</p>
+    <p class="meta-line">FREE AUDIT · 5 ENGINES TESTED · NO SALES CALL REQUIRED</p>
+  </div>
+
+  <div class="scorecard">
+    <div class="scorecard-head">
+      <span>Sample visibility scorecard</span>
+      <span>3 runs / engine</span>
+    </div>
+    <div class="engines">
+      <div class="engine">
+        <div class="engine-name">ChatGPT</div>
+        <div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip off"></span></div>
+      </div>
+      <div class="engine">
+        <div class="engine-name">Google AI</div>
+        <div class="pips"><span class="pip off"></span><span class="pip off"></span><span class="pip off"></span></div>
+      </div>
+      <div class="engine">
+        <div class="engine-name">Perplexity</div>
+        <div class="pips"><span class="pip on"></span><span class="pip off"></span><span class="pip off"></span></div>
+      </div>
+      <div class="engine">
+        <div class="engine-name">Claude</div>
+        <div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div>
+      </div>
+      <div class="engine">
+        <div class="engine-name">Gemini</div>
+        <div class="pips"><span class="pip off"></span><span class="pip off"></span><span class="pip off"></span></div>
+      </div>
+    </div>
+    <div class="scorecard-foot">This business shows up reliably on one engine, occasionally on two, and not at all on two others. That's a fixable gap — not a life sentence.</div>
+  </div>
+
+  <div class="content">
+
+    <h2><span class="idx">01</span>The gap nobody's talking about</h2>
+    <p>Most marketers already agree that AI search matters. Far fewer have actually checked whether <strong>their own business</strong> shows up in it. That's the gap — and referral traffic arriving from AI answer engines has been climbing fast enough that "wait and see" is quietly turning into "get left behind."</p>
+    <p>Here's the uncomfortable part: that gap is either really good news or really bad news, depending on which side of it you're standing on. Right now, you don't know which side you're on. Almost nobody does.</p>
+
+    <h2><span class="idx">02</span>Why this isn't just "SEO with a new name"</h2>
+    <p>Traditional SEO competes for a spot on a results list — the searcher does the work of choosing. AI answer engines skip the list. They read across the web, decide what's true and relevant, and hand the user one synthesized recommendation. There's no page two to hide on.</p>
+    <div class="callout">Thin, template-y websites get skipped. Vague "About Us" pages get skipped. Scattered, inconsistent information across the web gets skipped — or worse, described inaccurately.</div>
+    <p>That last part is the real risk. It's increasingly common for an AI model to confidently say something <strong>wrong</strong> about a real business — old hours, a wrong price, a service that isn't offered anymore. If a customer asks "is this place still open?" and gets a bad answer, you lose them before you ever know they existed.</p>
+
+    <h2><span class="idx">03</span>What the free snapshot actually does</h2>
+    <div class="card-list">
+      <div class="card-item">
+        <span class="mark">01</span>
+        <div><strong>Tests 5 engines</strong><p>ChatGPT, Google AI Overviews, Perplexity, Claude, and Gemini — the ones your customers are actually using.</p></div>
+      </div>
+      <div class="card-item">
+        <span class="mark">02</span>
+        <div><strong>Runs it 3 times per engine</strong><p>AI answers aren't static. Showing up once is very different from showing up every time — and that difference changes what you do next.</p></div>
+      </div>
+      <div class="card-item">
+        <span class="mark">03</span>
+        <div><strong>Checks for accuracy, not just presence</strong><p>If a model is telling people something wrong about your business, you need to know today — not after a customer complains.</p></div>
+      </div>
+      <div class="card-item">
+        <span class="mark">04</span>
+        <div><strong>Benchmarks your top competitor</strong><p>Including where they're getting cited from, so any fix is based on evidence, not guesswork.</p></div>
+      </div>
+      <div class="card-item">
+        <span class="mark">05</span>
+        <div><strong>Delivers a one-page report</strong><p>Plain language, real screenshots, no jargon. No sales call required to get it.</p></div>
+      </div>
+    </div>
+
+    <h2><span class="idx">04</span>Who this is actually useful for</h2>
+    <div class="who-grid">
+      <div class="who-item">You rely on local / "near me" discovery</div>
+      <div class="who-item">Your website hasn't changed in a while</div>
+      <div class="who-item">You've never checked what ChatGPT says about you</div>
+      <div class="who-item">You compete against a bigger, well-known name</div>
+    </div>
+    <p>If none of that sounds like you, this probably isn't urgent yet. For most local and small businesses, at least one of those is true.</p>
+
+    <h2><span class="idx">05</span>What happens after the snapshot</h2>
+    <p>Some businesses check their snapshot and find they're in solid shape — great, now you know, and you can keep an eye on it. Others find real gaps: missing structured data, an incomplete business profile, outdated information circulating online, or simply nothing an AI model can point to that clearly says <em style="color:var(--text-hi); font-style:normal;">this is what we do and why we're good at it.</em></p>
+    <p>If gaps show up, we'll tell you plainly what they are and what fixing them involves. There's no obligation to do anything more than read the report.</p>
+
+  </div>
+
+  <div class="cta-block" id="snapshot">
+    <div class="eyebrow">Free · Takes minutes to request</div>
+    <h3>Get your free AI Visibility Snapshot</h3>
+    <p>Find out — in plain language, with real screenshots — whether AI search is working for your business or working against it.</p>
+    <a class="cta-button" href="#">Request your free snapshot →</a>
+    <p class="cta-sub">NO CREDIT CARD · NO SALES CALL · ONE-PAGE REPORT</p>
+  </div>
+
+  <footer>
+    <span>AutomatedProfit.ai</span>
+    <span>AI Visibility Snapshot · 2026</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

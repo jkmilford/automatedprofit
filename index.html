@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +25,9 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1
 .logo{font-weight:800;font-size:.95rem;color:#fff}
 .logo span{color:var(--accent)}
 .nav-pill{background:var(--accent);color:#000;font-weight:700;font-size:.75rem;padding:.4rem 1rem;border:none;cursor:pointer;border-radius:100px;white-space:nowrap}
+.nav-blog{background:transparent;color:var(--accent);font-weight:800;font-size:.95rem;padding:.6rem 1.5rem;border:2px solid var(--accent);cursor:pointer;border-radius:100px;white-space:nowrap;text-decoration:none;letter-spacing:-.01em;transition:background .15s ease,color .15s ease}
+.nav-blog:hover{background:var(--accent);color:#000}
+.nav-right{display:flex;align-items:center;gap:.9rem}
 
 .hero{padding:2.5rem 1.25rem 1.5rem;max-width:1080px;margin:0 auto}
 .hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:#1a1a1a;border:1px solid var(--border);border-radius:100px;padding:.3rem .9rem;margin-bottom:1.5rem;font-size:.72rem;font-weight:600;color:var(--muted)}
@@ -87,6 +89,18 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1
 .stat-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.25rem}
 .stat-number{font-size:2.5rem;font-weight:800;color:var(--accent);letter-spacing:-.03em;line-height:1}
 .stat-label{font-size:.78rem;color:var(--muted);margin-top:.4rem;line-height:1.5}
+.picks-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.1rem 1.25rem}
+.picks-card h3{font-size:.95rem;font-weight:800;color:#fff;margin-bottom:.2rem}
+.picks-sub{font-size:.7rem;color:var(--muted);margin-bottom:1rem}
+.pick{display:flex;gap:.85rem;align-items:center;padding:.75rem 0;border-bottom:1px solid var(--border)}
+.pick:last-of-type{border-bottom:none}
+.pick-icon{flex-shrink:0;width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#0d1f3c,#0a2a1a);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.3rem}
+.pick-info{flex:1;min-width:0}
+.pick-name{font-weight:700;font-size:.8rem;color:#fff;line-height:1.25;margin-bottom:.15rem}
+.pick-why{font-size:.68rem;color:var(--muted);line-height:1.4}
+.pick-btn{flex-shrink:0;padding:.4rem .8rem;background:var(--accent);border-radius:100px;color:#000;font-size:.68rem;font-weight:800;text-decoration:none;white-space:nowrap;transition:opacity .18s}
+.pick-btn:hover{opacity:.85}
+.picks-disclosure{font-size:.62rem;color:#555;margin-top:.9rem;line-height:1.5}
 
 .site-footer{border-top:1px solid var(--border);padding:1.5rem 1.25rem;max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem}
 .site-footer p{font-size:.72rem;color:#555}
@@ -115,7 +129,10 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1
 
 <nav>
   <div class="logo">Automated<span>Profit</span>.ai</div>
-  <button class="nav-pill">Free Calculator</button>
+  <div class="nav-right">
+    <a class="nav-blog" href="/blog/index.html">Read the Blog →</a>
+    <button class="nav-pill">Free Calculator</button>
+  </div>
 </nav>
 
 <div class="hero">
@@ -171,11 +188,6 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1
 
   <div class="sidebar">
 
-    <div class="tools-card">
-      <h3>Recommended for your team</h3>
-      <div id="tool-list"></div>
-    </div>
-
     <div class="book-card">
       <div class="book-thumb">
         <div class="book-thumb-title"><span class="ai-blue">AI</span> for the 50+ Entrepreneur</div>
@@ -184,8 +196,42 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1
         <div class="book-tag">📖 Featured Book</div>
         <div class="book-title">AI for the 50+ Entrepreneur</div>
         <span class="book-stars">★★★★★</span>
-        <a class="book-btn" href="https://www.amazon.com/dp/B0GTWSGF4S" target="_blank">Buy on Amazon →</a>
+        <a class="book-btn" href="https://www.amazon.com/dp/B0GTWSGF4S?tag=automatedpr0a-20" target="_blank">Buy on Amazon →</a>
       </div>
+    </div>
+
+    <div class="picks-card">
+      <h3>Desk upgrades that pay off</h3>
+      <div class="picks-sub">Small tools our readers buy to get more from every AI-powered hour.</div>
+
+      <div class="pick">
+        <div class="pick-icon">🎧</div>
+        <div class="pick-info">
+          <div class="pick-name">Noise-cancelling headphones</div>
+          <div class="pick-why">Deep-focus work sessions — the #1 productivity buy.</div>
+        </div>
+        <a class="pick-btn" href="https://www.amazon.com/s?k=noise+cancelling+headphones&tag=automatedpr0a-20" target="_blank" rel="nofollow sponsored">View →</a>
+      </div>
+
+      <div class="pick">
+        <div class="pick-icon">🖥️</div>
+        <div class="pick-info">
+          <div class="pick-name">Portable USB-C monitor</div>
+          <div class="pick-why">Second screen for solopreneurs — instant workflow boost.</div>
+        </div>
+        <a class="pick-btn" href="https://www.amazon.com/s?k=portable+usb+c+monitor&tag=automatedpr0a-20" target="_blank" rel="nofollow sponsored">View →</a>
+      </div>
+
+      <div class="pick">
+        <div class="pick-icon">⌨️</div>
+        <div class="pick-info">
+          <div class="pick-name">Wireless keyboard &amp; mouse combo</div>
+          <div class="pick-why">Clean, ergonomic desk setup under $50 — easy yes.</div>
+        </div>
+        <a class="pick-btn" href="https://www.amazon.com/s?k=wireless+keyboard+mouse+combo&tag=automatedpr0a-20" target="_blank" rel="nofollow sponsored">View →</a>
+      </div>
+
+      <div class="picks-disclosure">As an Amazon Associate we earn from qualifying purchases. Links may be affiliate links.</div>
     </div>
 
     <div class="stat-card">
@@ -202,14 +248,6 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1rem 1
 </div>
 
 <script>
-const tools=[
-  {name:"Claude for Teams",desc:"Writing, research & strategy on autopilot",cost:"$30/user/mo",badge:"green",label:"Top Pick",url:"https://claude.ai",fits:["writing","research"]},
-  {name:"GitHub Copilot",desc:"AI pair programmer — ships code faster",cost:"$19/user/mo",badge:"green",label:"Top Pick",url:"https://github.com/features/copilot",fits:["coding"]},
-  {name:"Cursor",desc:"AI code editor your engineers will love",cost:"$20/user/mo",badge:"orange",label:"Hot",url:"https://cursor.sh",fits:["coding"]},
-  {name:"Intercom Fin",desc:"Resolve support tickets automatically",cost:"~$0.99/resolution",badge:"orange",label:"High ROI",url:"https://intercom.com",fits:["support"]},
-  {name:"Notion AI",desc:"Docs, wikis & meeting notes on autopilot",cost:"$10/user/mo",badge:"green",label:"Easy Win",url:"https://notion.so",fits:["writing","research"]},
-  {name:"Zapier AI",desc:"Automate workflows across your whole stack",cost:"From $20/mo",badge:"green",label:"Versatile",url:"https://zapier.com",fits:["research","support","writing"]},
-];
 function fmt(n){if(n>=1000000)return"$"+(n/1000000).toFixed(1)+"M";if(n>=1000)return"$"+Math.round(n/1000)+"k";return"$"+Math.round(n)}
 function calc(){
   const team=+document.getElementById("team").value||0;
@@ -231,16 +269,6 @@ function calc(){
   document.getElementById("out-dollars").textContent=fmt(dollarSaved);
   document.getElementById("out-roi").textContent=roi+"%";
   document.getElementById("out-net").textContent=fmt(net);
-  const active=[];
-  if(writing>0)active.push("writing");
-  if(research>0)active.push("research");
-  if(support>0)active.push("support");
-  if(coding>0)active.push("coding");
-  const list=document.getElementById("tool-list");
-  list.innerHTML="";
-  tools.filter(t=>t.fits.some(f=>active.includes(f))).slice(0,3).forEach(t=>{
-    list.innerHTML+=`<div class="tool-item"><div class="tool-header"><span class="tool-name">${t.name}</span><span class="badge badge-${t.badge}">${t.label}</span></div><div class="tool-desc">${t.desc}</div><div class="tool-cost">${t.cost}</div><a class="tool-btn" href="${t.url}" target="_blank">Get started →</a></div>`;
-  });
 }
 document.querySelectorAll("input,select").forEach(el=>el.addEventListener("input",calc));
 calc();
